@@ -17,6 +17,54 @@ TicTacToe::TicTacToe()
 	}
 }
 
+void TicTacToe::displayGame()
+{
+	for (int counter = 1; counter < 3; ++counter)
+	{
+		int row;
+		int col;
+		player = counter;
+		cout << "Player " << counter << ": Please enter the following to indicate where you would like to make a mark" << endl
+			<< "Row: " << endl;
+		cin >> row;
+		row = inputValidation(row);
+
+		cout << "Column: " << endl;
+		cin >> col;
+		col = inputValidation(col);
+		emptyArraySpace(row, col, player);
+
+		cout << win() << endl;
+		displayArray();
+		numOccupiedSpaces();
+
+		if (win() != 0)
+			counter = terminateLoop();
+	}
+
+	loopDestiny();
+}
+
+void TicTacToe::loopDestiny()
+{
+	if (win() == 0)
+		displayGame();
+}
+
+int TicTacToe::terminateLoop()
+{
+	int i;
+	if (win() == 1)
+		return i = 4;
+	else if (win() == 2)
+		return i = 4;
+	else if (win() == 3)
+		return i = 4;
+	else
+	{
+	}
+}
+
 void TicTacToe::changeBackToZero()
 {
 	for (int col = 0; col < 3; ++col)
@@ -77,7 +125,6 @@ void TicTacToe::emptyArraySpace(int row, int col, int player)
 			cin >> col;
 			col = inputValidation(col);
 		}
-
 		setThreeDArray(row, col, player);
 	}
 
@@ -93,7 +140,6 @@ void TicTacToe::emptyArraySpace(int row, int col, int player)
 			cin >> col;
 			col = inputValidation(col);
 		}
-
 		setThreeDArray(row, col, player);
 	}
 }
@@ -105,12 +151,14 @@ int TicTacToe::numOccupiedSpaces()
 	{
 		for (int col = 0; col < 3; ++col)
 		{
-			if (threeDArray[row][col] != 0)
+			if (threeDArray[row][col] == 0)
 				++total;
 		}
 	}
 	return total;
 }
+
+
 
 int TicTacToe::win()
 {
@@ -193,11 +241,16 @@ int TicTacToe::win()
 		else
 			return winner = 0;
 	}
-
+	else if (numOccupiedSpaces() == 0)
+	{
+		return winner = 3;
+	}
 	else
 		return winner = 0;
-
 }
+	
+
+
 
 
 

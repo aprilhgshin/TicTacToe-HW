@@ -9,6 +9,9 @@ class TicTacToe
 private:
 	int threeDArray[3][3];
 	int winner;
+	int player;
+	int actualRow;
+	int actualCol;
 
 public:
 	TicTacToe();
@@ -19,4 +22,7 @@ public:
 	int inputValidation(int);
 	int numOccupiedSpaces();
 	void changeBackToZero();
+	void displayGame();
+	void loopDestiny();
+	int terminateLoop();
 };
