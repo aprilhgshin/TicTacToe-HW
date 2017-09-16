@@ -21,6 +21,7 @@ void TicTacToe::displayGame()
 {
 	for (int counter = 1; counter < 3; ++counter)
 	{
+		int player;
 		int row;
 		int col;
 		player = counter;
@@ -162,6 +163,8 @@ int TicTacToe::numOccupiedSpaces()
 
 int TicTacToe::win()
 {
+	int winner;
+
 	if (threeDArray[0][0] == threeDArray[0][1] && threeDArray[0][0] == threeDArray[0][2])
 	{
 		if (threeDArray[0][0] == 1)
